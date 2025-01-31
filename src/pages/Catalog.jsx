@@ -1,22 +1,32 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-//import Product from "../components/Product";
+import {TrucksCart} from "../components/TrucksCart/TrucksCart.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCampers } from "../redux/campers/operations";
+import { selectFilteredContacts } from "../../redux/contacts/selectors";
 
-export const Products = () => {
-  const [products, setProducts] = useState([]);
-//   useEffect(() => {
-//     axios
-//       .get("https://dummyjson.com/products")
-//       .then((res) => setProducts(res.data.products));
-//   }, []);
+export const Catalog = () => {
+  const dispatch = useDispatch();
+  //const isLoading = useSelector((state) => state.campers.isLoading);
+  const error = useSelector((state) => state.campers.error);
+  const [carts, setCarts] = useState([]);
+  //setCarts(res.data.campers);
+  const filteredArray = useSelector(selectFilteredContacts);     
+  
+  useEffect(() => {
+    dispatch(fetchCampers());
+  }, [dispatch]);
+  
   return (
     <div>
-      <h2>Products</h2>
-      {/* <ul className="grid grid-cols-3 gap-4">
-        {products.map((product) => (
-          <Product key={product.id} product={product} />
-        ))}
-      </ul> */}
+      <h2>Products</h2>    
+      <ul className="grid grid-cols-3 gap-4">
+      {Array.isArray(filteredArray) &&
+          filteredArray.map((items) => {
+            return (
+              <Contact key={items.id} items={items} />
+            );
+          })}
+      </ul>
     </div>
   );
 };
