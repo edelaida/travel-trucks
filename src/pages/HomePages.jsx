@@ -1,10 +1,14 @@
-//import { container } from '../../public/Container.png'
+import  fon  from '../components/images/fon.png'
 
 export const HomePages = () => {
+  const handlClick = () => {
+      console.log({campers});
+      
+  }
     return (
       <div >
-        <h1>HomePages</h1>
-             {/* <img src={container} /> */}
+        <img src={fon} alt="container" />
+        <button onClick={(handlClick)}>campers</button>
       </div>
     );
   };

@@ -36,9 +36,9 @@ export const App = () => {
     <div>
       <Header />
       <Routes>
-        <Route path="/" element={<Catalog />} />
         {/* <Route path="/cart" element={<Cart />} /> */}
         <Route path="*" element={<HomePages />} />
+        <Route path="/" element={<Catalog />} />
       </Routes>
     </div>
   );

@@ -2,3 +2,9 @@
     padding-left: 20px;
     padding-top: 10px;
   }
+  .card {
+    /* display: block; */
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
