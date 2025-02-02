@@ -5,9 +5,14 @@ const INITAL_STATE = {
     items: [],
   },
   filters: {
-    name: "",
+    ac: true,
+    bathroom: true,
+    kitchen: true,
+    tv: true,
+    radio: true,
   },
 };
+
 const searchSlice = createSlice({
   name: "filters",
   initialState: INITAL_STATE.filters,
