@@ -1,46 +1,21 @@
-//import css from "./app.module.css";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useEffect } from "react";
-// import { fetchContacts } from "./redux/contactsOps";
-// import { HomePages } from "./pages/HomePages.jsx";
-// import { Header } from './components/Header/Header.jsx' 
-
-// const App = () => {
-  // const dispatch = useDispatch();
-  // const isLoading = useSelector((state) => state.contacts.isLoading);
-  // const error = useSelector((state) => state.contacts.error);
-
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
-
-//   return (
-//     <div >
-//       <Header />
-//       <HomePages />
-//     </div>
-//   );
-// };
-// export default App;
-
-
-
 import { Route, Routes } from "react-router-dom";
 import { Catalog} from "./pages/Catalog.jsx";
-//import Cart from "./pages/Cart";
-import {HomePages} from "./pages/HomePages.jsx";
-import { Header } from './components/Header/Header.jsx';
+import { HomePages } from "./pages/HomePages.jsx";
+import {NotFound} from './pages/NotFound.jsx'
+import css from "./App.module.css";
+import { Layout } from "./components/Layout.jsx";
+
 
 export const App = () => {
   return (
-    <div>
-      <Header />
+    <div className={css.wrapper} >      
       <Routes>
-        {/* <Route path="/cart" element={<Cart />} /> */}
-        <Route path="*" element={<HomePages />} />
-        <Route path="/" element={<Catalog />} />
-      </Routes>
+        <Route path='/' element={<Layout/>} > 
+        <Route index element={<HomePages />} />
+        <Route path='campers' element={<Catalog />} />
+          <Route path='*' element={<NotFound />} />
+          </Route>
+      </Routes>     
     </div>
   );
 };
-//export default App;
