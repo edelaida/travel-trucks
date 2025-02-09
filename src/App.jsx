@@ -3,6 +3,7 @@ import { Catalog} from "./pages/Catalog.jsx";
 import { HomePages } from "./pages/HomePages.jsx";
 import {NotFound} from './pages/NotFound.jsx'
 import { Layout } from "./components/Layout.jsx";
+import { Cart } from "./pages/Cart.jsx";
 
 
 export const App = () => {
@@ -10,10 +11,11 @@ export const App = () => {
     <div>      
       <Routes>
         <Route path='/' element={<Layout/>} > 
-        <Route index element={<HomePages />} />
-        <Route path='campers' element={<Catalog />} />
+          <Route index element={<HomePages />} />
+          <Route path='campers' element={<Catalog />} />
+          <Route path='campers/id' element={<Cart />} />
           <Route path='*' element={<NotFound />} />
-          </Route>
+        </Route>
       </Routes>     
     </div>
   );

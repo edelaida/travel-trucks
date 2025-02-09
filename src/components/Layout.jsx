@@ -1,19 +1,18 @@
-import { Link, Outlet } from "react-router-dom"
-import css from "../components/Header/Header.module.css";
-//import { Header } from "./Header/Header";
+import { NavLink, Outlet } from "react-router-dom"
+import css from "./Layout.module.css";
 
 export const Layout = () => {
     return (
-        <> 
-            <section className={css.block}> 
-            <span className={css.logo}>HEADER</span>    
-     <div className={css.nav} >
-        <Link to='/' className={css.menu}>Home</Link>
-        <Link to='/campers' className={css.menu}>Catalog</ Link>
-      </div>
-        </section> 
-            <Outlet />          
-            </>
+    <> 
+      <section className={css.block}> 
+      <span className={css.logo}>TravelTrucks</span>    
+       <div className={css.nav} >
+        <NavLink to='/' className={css.menu}>Home</NavLink>
+        <NavLink to='/campers' className={css.menu}>Catalog</ NavLink>
+       </div>
+      </section> 
+        <Outlet />          
+    </>
     );
 }
 

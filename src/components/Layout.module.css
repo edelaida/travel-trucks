@@ -1,0 +1,35 @@
+.block {
+    display: flex;    
+    gap: 350px;
+   border-bottom-width: 1px;
+   padding-top: 24px;
+   padding-right: 64px;
+   padding-bottom: 24px;
+   padding-left: 64px;
+   background-color: #F7F7F7;  
+  }
+  .logo {
+    font-weight: 600;
+    font-size: 20px;
+    color: #101828;
+  }
+  .nav {  
+    /* padding-left: 200px; */
+    list-style: none;
+  }
+  .menu {
+    color: #101828;
+    display: inline;
+    margin-left: 24px;
+    cursor: pointer;
+    transition: opacity 500ms ease;    
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+  .menu:hover {
+     color: crimson; 
+  }  
+ 
