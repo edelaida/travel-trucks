@@ -1,32 +1,19 @@
-import { useEffect, useState } from "react";
 import {TrucksCart} from "../components/TrucksCart/TrucksCart.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCampers } from "../redux/campers/operations";
-import { selectCampers } from "../redux/campers/selectors.js";
+import { selectCampers, selectError, selectIsLoading } from "../redux/campers/selectors.js";
 import css from './Catalog.module.css';
-
 
 export const Catalog = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.campers.isLoading);
-  const error = useSelector((state) => state.campers.error);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
   const data = useSelector(selectCampers);
   const user = data.items;
-  
-  // const [perPage] = useState(4);
-  // const [page, setPage] = useState(1);
-  
-  useEffect(() => {
-    dispatch(fetchCampers());
-  }, [dispatch]);
-  
-  // const lastIndex = page * perPage;
-  // const firstIndex = lastIndex - perPage;
-  // const currentImage = user.slice(firstIndex, lastIndex);
-
-  
-  return (
-    <div className={css.container} >
+     
+ return (
+   <div className={css.container} >
+     {isLoading && <h3>Loading....</h3>}
+     {error && <h3>Error....</h3>}
       <section className={css.location} >
         <p className={css.lll} >Location</p>
         <p className={css.lmap} >Kyiv, Ukraine</p>
@@ -48,11 +35,10 @@ export const Catalog = () => {
           user.map((item) => {
             return ( 
              <TrucksCart key={item.id}
-              camper ={item} />             
+              item ={item} />             
             );
           })}
         </ul>       
-      {/* {query.length !== 0 && <LoadMoreBtn onSearchPage={onSearchPage} />} */}
-    </div>
+      </div>
   );
 }

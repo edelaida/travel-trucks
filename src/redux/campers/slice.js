@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers } from "./operations.js";
+import { fetchCampers, fetchCampersById } from "./operations.js";
 
 const INITAL_STATE = {
   campers: {
@@ -31,21 +31,21 @@ const campersSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })      
-      // .addCase(deleteContact.pending, (state) => {
-      //   state.loading = true;
-      //   state.error = null;
-      // })
-      // .addCase(deleteContact.fulfilled, (state, action) => {
-      //   state.items = state.items.filter(
-      //     (contact) => contact.id !== action.payload.id
-      //   );
-      //   state.loading = false;
-      //   state.error = null;
-      // })
-      // .addCase(deleteContact.rejected, (state, action) => {
-      //   state.loading = false;
-      //   state.error = action.payload;
-      // });
+      .addCase(fetchCampersById.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchCampersById.fulfilled, (state, action) => {
+        state.items = action.payload.id
+        //state.items = state.items.filter(item => item.id === action.payload);
+        // state.items[itemIndex]
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(fetchCampersById.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 
