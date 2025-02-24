@@ -2,6 +2,7 @@ import {TrucksCart} from "../components/TrucksCart/TrucksCart.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCampers, selectError, selectIsLoading } from "../redux/campers/selectors.js";
 import css from './Catalog.module.css';
+import { setFilterValue } from "../redux/campers/sliceFilter.js";
 
 export const Catalog = () => {
   const dispatch = useDispatch();
@@ -21,11 +22,11 @@ export const Catalog = () => {
       <p className={css.namefiltr} >Filters</p>
         <h3 className={css.namevehicle} >Vehicle equipment</h3>
         <div className={css.btnsection} >
-        <button className={css.btnequip}>AC</button>
+        <button onClick={()=>dispatch(setFilterValue('AC'))} className={css.btnequip}>AC</button>
       <button className={css.btnequip}>Automatic</button>
       <button className={css.btnequip}>kitchen</button>
       <button className={css.btnequip}>TV</button>
-      <button className={css.btnequip}>bathroom</button> 
+      <button onClick={()=>dispatch(setFilterValue('bathroom'))} className={css.btnequip}>bathroom</button> 
         </div> 
          <button className={css.btnsearch}>Search</button>
       </section>     

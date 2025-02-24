@@ -1,8 +1,4 @@
-
-//import { useDispatch } from "react-redux";
-//import { Navigate, NavLink } from "react-router-dom";
 import css from "./TrucksCart.module.css";
-//import { Cart } from "../../pages/Cart";
 import { Link } from "react-router-dom";
 
 export const TrucksCart = ({item}) => {
@@ -37,8 +33,3 @@ return (
     );
 };
   
-{/* <img       
-        className={css.card}
-        src={camper.gallery[0].}
-        alt={camper.name}
-      /> */}

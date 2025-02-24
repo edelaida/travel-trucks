@@ -7,9 +7,9 @@ const INITAL_STATE = {
     loading: false,
     error: null,
   },
-  filters: {
-    name: "",
-  },
+  // filters: {
+  //   name: "",
+  // },
 };
 
 const campersSlice = createSlice({

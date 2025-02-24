@@ -1,16 +1,19 @@
-//import { createSelector } from "@reduxjs/toolkit";
+import { createSelector } from "@reduxjs/toolkit";
 
 export const selectCampers = (state) => state.campers.items;
 export const selectCampersById = (state) => state.campers.items.id;
 export const selectIsLoading = (state) => state.campers.loading;
 export const selectError = (state) => state.campers.error;
-export const selectFilter = (state) => state.filters.name;
+export const selectFilter = (state) => state.filter.filter;
 
-// export const selectFilteredCampers = createSelector(
-//   [selectCampers, selectFilter],
-//   (campers, filter) => {
-//     return campers.filter((camper) =>
-//       camper.name.toLowerCase().includes(filter.toLowerCase())
-//     );
-//   }
-// );
+export const selectFilteredData = createSelector([selectCampers, selectFilter], (campers, filter) => {
+    switch (filter) {
+      case 'kitchen':
+        return campers.filter(items => items.kitchen);
+      case 'AC':
+        return campers.filter(items => items.AC);
+      default:
+        return campers;
+    }
+  });
+     

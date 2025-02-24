@@ -67,6 +67,9 @@
    mix-blend-mode: Multiply;
    border-width: 1px;
 }
+.btnequip:hover{
+    background-color: gray;
+  }
 .btnsearch {
     width: 166;
     height: 56;
