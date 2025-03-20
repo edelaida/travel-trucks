@@ -29,3 +29,55 @@ export const fetchCampersById = createAsyncThunk(
     }
   }
 );
+
+
+//
+export const getTrending = async () => {
+  try {
+    const { data } = await axios.get("trending/movie/day");
+    return data.results;
+  } catch (error) {
+    console.error("Error fetching trending movies:", error);
+    throw error;
+  }
+};
+
+export const searchMovie = async (query) => {
+  try {
+    const { data } = await axios.get(`/search/movie?query=${query}`);
+    return data.results;
+  } catch (error) {
+    console.error("Error fetching trending movies:", error);
+    throw error;
+  }
+};
+
+export const getDetails = async (movieId) => {
+  try {
+    const { data } = await axios.get(`/movie/${movieId}`);
+    return data;
+  } catch (error) {
+    console.error("Error fetching trending movies:", error);
+    throw error;
+  }
+};
+
+export const getCredits = async (movieId) => {
+  try {
+    const { data } = await axios.get(`/movie/${movieId}/credits`);
+    return data;
+  } catch (error) {
+    console.error("Error fetching trending movies:", error);
+    throw error;
+  }
+};
+
+export const getReviews = async (movieId) => {
+  try {
+    const { data } = await axios.get(`movie/${movieId}/reviews`);
+    return data;
+  } catch (error) {
+    console.error("Error fetching trending movies:", error);
+    throw error;
+  }
+};
