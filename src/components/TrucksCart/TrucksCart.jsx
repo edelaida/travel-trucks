@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const TrucksCart = ({item}) => {
   const picture = item.gallery[0];
-  
+   
 return ( 
       
     <li className={css.cartblock} key={item.id}>
@@ -25,11 +25,12 @@ return (
           {item.bathroom === true && <button className={css.btnfiltr}>bathroom</button>}
           {item.kitchen === true && <button className={css.btnfiltr}>kitchen</button>}
           {item.kitchen === true && <button className={css.btnfiltr}>{item.engine}</button>}
-        </div>        
-        <Link  to={`/campers/${item.id}`} className={css.btnshow}>Show more</ Link>
-        
+        </div>   
+        <Link  to={item.id.toString()} className={css.btnshow}>Show more</ Link>
       </section>
     </li> 
     );
 };
   
+
+//  <Link  to={`/campers/${item.id}`} className={css.btnshow}>Show more</ Link> 

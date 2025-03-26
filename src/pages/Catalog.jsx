@@ -1,45 +1,51 @@
 import {TrucksCart} from "../components/TrucksCart/TrucksCart.jsx";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCampers, selectError, selectIsLoading } from "../redux/campers/selectors.js";
+import { fetchItems } from "../redux/api.js";
 import css from './Catalog.module.css';
-import { setFilterValue } from "../redux/campers/sliceFilter.js";
+import { useEffect, useState } from "react";
 
 export const Catalog = () => {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-  const data = useSelector(selectCampers);
-  const user = data.items;
-     
+   const [items, setItems] = useState([]);
+   
+     useEffect(() => {
+       const getCatalog = async () => {
+         const data = await fetchItems();
+         setItems(data);
+       };
+       getCatalog();              
+     }, []);
+         
  return (
-   <div className={css.container} >
-     {isLoading && <h3>Loading....</h3>}
-     {error && <h3>Error....</h3>}
+   <div className={css.container} >    
       <section className={css.location} >
         <p className={css.lll} >Location</p>
-        <p className={css.lmap} >Kyiv, Ukraine</p>
-     
+        <p className={css.lmap} >Kyiv, Ukraine</p>     
       <p className={css.namefiltr} >Filters</p>
         <h3 className={css.namevehicle} >Vehicle equipment</h3>
         <div className={css.btnsection} >
-        <button onClick={()=>dispatch(setFilterValue('AC'))} className={css.btnequip}>AC</button>
+        <button   className={css.btnequip}>AC</button>
       <button className={css.btnequip}>Automatic</button>
       <button className={css.btnequip}>kitchen</button>
       <button className={css.btnequip}>TV</button>
-      <button onClick={()=>dispatch(setFilterValue('bathroom'))} className={css.btnequip}>bathroom</button> 
+      <button  className={css.btnequip}>bathroom</button> 
         </div> 
          <button className={css.btnsearch}>Search</button>
-      </section>     
+     </section>            
       <ul className={css.sectioncard}  >
-        {user &&
-          user.length > 0 &&
-          user.map((item) => {
-            return ( 
-             <TrucksCart key={item.id}
-              item ={item} />             
-            );
-          })}
+        {items &&
+          items.length > 0 &&
+         items.map((item) => {
+          return ( 
+            <TrucksCart key={item.id}
+             item ={item} />             
+           );
+         })}
         </ul>       
       </div>
   );
 }
+
+
+
+        
+
+                  
