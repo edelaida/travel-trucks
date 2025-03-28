@@ -6,6 +6,10 @@ import { fetchItemsId } from '../redux/api.js'
 export const Cart = () => {
   const {itemsId} = useParams();
   const [item, setItem] = useState(null);
+  if (item != null) {
+    const car1 = item.gallery[1];
+    const car2 = item.gallery[2];
+   }
 
   useEffect(() => {
     const getData = async () => {
@@ -14,18 +18,20 @@ export const Cart = () => {
     };
     getData();
   }, [itemsId]);
-   
-      
+        
   return (
     <div >
       <h3> CART</h3>
-      
-      {post && (
-        <> 
-          <h4>{item.name} </h4>
-          <p>{item.price} </p>
-        </>
-      )}
+      <h4>{item.name} </h4>
+      <p>{item.price} </p>
+       <img className={css.card}
+                src={car1.thumb}
+                alt={item.name} />
+        <img       
+             className={css.card}
+             src={car2.thumb}
+             alt={item.name}
+             />
     </div>
    
   );
