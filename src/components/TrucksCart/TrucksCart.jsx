@@ -6,7 +6,7 @@ export const TrucksCart = ({item}) => {
    
 return ( 
       
-    <li className={css.cartblock} key={item.id}>
+  <li className={css.cartblock} key={item.id}>
       <img       
       className={css.card}
       src={picture.thumb}

@@ -4,32 +4,31 @@ import css from './Cart.module.css'
 import { fetchItemsId } from '../redux/api.js'
 
 export const Cart = () => {
-  const {itemsId} = useParams();
+  const {itemId} = useParams();
   const [item, setItem] = useState(null);
-  if (item != null) {
-    const car1 = item.gallery[1];
-    const car2 = item.gallery[2];
-   }
-
+  
   useEffect(() => {
-    const getData = async () => {
-      const data = await fetchItemsId(itemsId);
+     const getData = async () => {
+      const data = await fetchItemsId(itemId);
       setItem(data);
     };
     getData();
-  }, [itemsId]);
-        
+  }, [itemId]);
+  
+  if (!item) return <h2>Loading....</h2> ;
+  const car1 = item.gallery[1];
+  const car2 = item.gallery[2];
   return (
     <div >
-      <h3> CART</h3>
+      <h3> CART</h3>     
       <h4>{item.name} </h4>
       <p>{item.price} </p>
        <img className={css.card}
-                src={car1.thumb}
+                src={car1.original}
                 alt={item.name} />
         <img       
              className={css.card}
-             src={car2.thumb}
+             src={car2.original}
              alt={item.name}
              />
     </div>

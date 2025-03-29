@@ -7,8 +7,7 @@ export const fetchItems = async () => {
     return data.items;
 };
 
-export const fetchItemsId = async (itemsId) => {
-    const { data } = await axios.get(`campers/${itemsId}`);
-   console.log(data);
-     return data;
+export const fetchItemsId = async (itemId) => {
+    const { data } = await axios.get(`campers/${itemId}`);
+    return data;
 };
